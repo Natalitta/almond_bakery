@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(168, 79, 6);
+    color: white;
+}
+nav .brand{
+    color: rgb(168, 79, 6);
+    font-weight: bold;
+}
+.card-body a {
+    color: rgb(168, 79, 6);
+}
+#vegan {
+    background-color: rgb(209, 255, 189);
+    border-radius: 5px;
+    padding: 0 10px;
+}
+#vegan i {
+    color: rgb(5, 202, 55);
+}
+#order-btn {
+    color: rgb(168, 79, 6);
+    background-color: white;
+    text-decoration: none;
+    font-weight: bold; 
+    border: solid 1px white;
+    border-radius: 10px;
+    padding: 3px;
+}
+.span-link {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
