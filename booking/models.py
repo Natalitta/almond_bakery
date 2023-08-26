@@ -17,7 +17,7 @@ class Booking(models.Model):
     booked_item = models.ForeignKey(MenuItem,
         on_delete=models.CASCADE, related_name="ordered_item")
     number_of_items = models.IntegerField(default=1)
-    personal_message = models.TextField(blank=True)
+    personal_message = models.TextField(blank=True, max_length=100)
     booking_date = models.DateField()
     home_delivery = models.BooleanField(default=False)
     address = models.CharField(max_length=100)

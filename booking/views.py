@@ -24,9 +24,10 @@ class BookingList(LoginRequiredMixin, ListView):
     template_name = 'all_bookings.html'
 
     def get_queryset(self):
+
         return Booking.objects.filter(
-                customer=self.request.user,
-                booking_date__gt=(date.today()-timedelta(days=1))
+            customer=self.request.user,
+            booking_date__gt=(date.today()-timedelta(days=1))
             )
 
 
