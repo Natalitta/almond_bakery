@@ -19,6 +19,32 @@ class Booking(LoginRequiredMixin, CreateView):
         return super(Booking, self).form_valid(form)
 
 
+class BookingFormPost(View):
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Booking.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
+
+        booking_form = BookingForm(data=request.POST)
+        if booking_form.is_valid():
+            booking_form.instance.email = request.user.email
+            booking_form.instance.name = request.user.username
+            booking = booking_form.save(commit=False)
+            booking.post = post
+            booking.save()
+        else:
+            booking_form = BookingForm()
+
+        return render(
+            request,
+            "all_bookings.html",
+            {
+                "booking_form": booking_form,
+            },
+        )
+
+
 class BookingList(LoginRequiredMixin, ListView):
     model = Booking
     template_name = 'all_bookings.html'

@@ -29,4 +29,4 @@ class Booking(models.Model):
         ordering = ['booking_date', 'delivery_time']
 
     def __str__(self):
-        return str(self.pk)
+        return str(self.booked_item)
