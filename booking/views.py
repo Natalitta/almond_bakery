@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 
 
-class Booking(LoginRequiredMixin, CreateView):
+class BookingCake(LoginRequiredMixin, CreateView):
 
     form_class = BookingForm
     template_name = 'booking.html'
@@ -16,33 +16,7 @@ class Booking(LoginRequiredMixin, CreateView):
     model = Booking
 
     def form_valid(self, form):
-        return super(Booking, self).form_valid(form)
-
-
-class BookingFormPost(View):
-
-    def post(self, request, slug, *args, **kwargs):
-
-        queryset = Booking.objects.all()
-        post = get_object_or_404(queryset, slug=slug)
-
-        booking_form = BookingForm(data=request.POST)
-        if booking_form.is_valid():
-            booking_form.instance.email = request.user.email
-            booking_form.instance.name = request.user.username
-            booking = booking_form.save(commit=False)
-            booking.post = post
-            booking.save()
-        else:
-            booking_form = BookingForm()
-
-        return render(
-            request,
-            "all_bookings.html",
-            {
-                "booking_form": booking_form,
-            },
-        )
+        return super(BookingCake, self).form_valid(form)
 
 
 class BookingList(LoginRequiredMixin, ListView):

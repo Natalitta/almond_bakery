@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{{ form.media }}
+
+{% block content %}
+
+<!-- Form to confirm Booking deletion -->
+<div class="form-style text-center p-3 m-3">
+    <h1 class="text-center">Delete Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete your order: "{{ object.pk }}"?</p>
+        <p>Name: {{ object.booking_name }}</p>
+        <p>Cake: {{ object.booked_item }}</p>
+        <p>Date: {{ object.booking_date }}</p>
+
+        <input type="submit" value="Confirm" class="btn order-btn">
+    </form>
+</div>
+{% endblock %}
