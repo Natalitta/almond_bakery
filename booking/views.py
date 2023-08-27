@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic, View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import MenuItem, Booking
@@ -8,15 +8,28 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 
 
-class BookingCake(LoginRequiredMixin, CreateView):
+class BookingCake(request, LoginRequiredMixin, CreateView):
+    error = ''
+    if request.method == POST:
+        form = BookingForm(request.post)
+        if form.is_valid():
+            form.save()
+            return redirect('all_bookings')
+        else:
+            error = 'Please check your order'
 
-    form_class = BookingForm
-    template_name = 'booking.html'
-    success_url = 'all_bookings'
-    model = Booking
+    form = BookingForm
+    # template_name = 'booking.html'
+    # success_url = 'all_bookings'
+    # model = Booking
+    data = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'booking/booking.html', data)
 
-    def form_valid(self, form):
-        return super(BookingCake, self).form_valid(form)
+    # def form_valid(self, form):
+    #    return super(BookingCake, self).form_valid(form)
 
 
 class BookingList(LoginRequiredMixin, ListView):
