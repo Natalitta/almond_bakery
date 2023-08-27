@@ -25,10 +25,11 @@ class BookingList(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
 
-        return Booking.objects.filter(
-            customer=self.request.user,
-            booking_date__gt=(date.today()-timedelta(days=1))
-            )
+        return Booking.objects.all()
+        # filter(
+        #    customer=self.request.user,
+        #    booking_date__gt=(date.today()-timedelta(days=1))
+        #    )
 
 
 class EditBooking(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

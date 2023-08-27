@@ -15,7 +15,8 @@ class BookingAdmin(admin.ModelAdmin):
         'delivery_time',
         'completed'
         )
-    search_fields = ['pk', 'completed', 'booked_item', 'customer__username']
+    search_fields = ['pk', 'completed', 'booked_item',
+        'booking_date', 'customer__username']
     list_filter = (
         'completed', 'booked_item', 'delivery_time',
         'booking_date', 'home_delivery'
@@ -23,4 +24,4 @@ class BookingAdmin(admin.ModelAdmin):
     actions = ['mark_completed']
 
     def mark_completed(self, request, queryset):
-        queryset.update(approved=True)
+        queryset.update(completed=True)
