@@ -22,42 +22,24 @@
                     <th><span class="sr-only">Delete Button Column</span></th>
                 </tr>
             </thead>
-            {% for booking in bookings %}
+            {% for booking in booking_list %}
             <tbody>
                 <tr>
-                    {% if booking.completed %}
-                    <td><strike>
-                        {{ .pk }}
+                    <td>
+                        {{ booking.pk }}
                     </td>
                     <td>
-                        {{ booking_name }}
+                        {{ booking.customer }}
                     </td>
                     <td>
-                        {{ booking_date }}
+                        {{ booking.booking_date }}
                     </td>
                     <td>
-                        {{ booked_item }}
+                        {{ booking.booked_item }}
                     </td>
                     <td>
-                        {{ number_of_items }}
-                    </strike></td>
-                    {% else %}
-                    <td>
-                        {{ .pk }}
+                        {{ booking.number_of_items }}
                     </td>
-                    <td>
-                        {{ booking_name }}
-                    </td>
-                    <td>
-                        {{ booking_date }}
-                    </td>
-                    <td>
-                        {{ booked_item }}
-                    </td>
-                    <td>
-                        {{ number_of_items }}
-                    </td>
-                    {% endif %}
                     <td>
                         <a href="{% url 'edit_booking' booking.id %}">
                             <button class="btn btn-success" type="button">
@@ -83,7 +65,7 @@
         <div class="d-grid gap-2 col-6 mx-auto text-center">
             <a href="{% url 'booking' %}">
                 <button class="btn" id="order-btn" type="button">
-                    Add another cake to your order                                   
+                    Add another order                                   
                 </button>
             </a>
         </div>

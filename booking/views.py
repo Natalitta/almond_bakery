@@ -27,9 +27,8 @@ class BookingCake(LoginRequiredMixin, CreateView):
 
         if request.method == POST:
             form = BookingForm(request.post)
-            customer = User
             if form.is_valid():
-                form.instance.customer = customer
+                form.instance.customer = self.request.user
                 form.save()
                 return redirect('all_bookings.html')
             else:
@@ -38,16 +37,8 @@ class BookingCake(LoginRequiredMixin, CreateView):
 
 class BookingList(LoginRequiredMixin, ListView):
     model = Booking
+    queryset = Booking.objects.order_by("booking_date")
     template_name = 'all_bookings.html'
-
-    def get_queryset(self):
-        queryset = Booking.objects.order_by("completed")
-
-        return Booking.objects.all()
-        # filter(
-        #    customer=self.request.user,
-        #    booking_date__gt=(date.today()-timedelta(days=1))
-        #    )
 
 
 class EditBooking(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
