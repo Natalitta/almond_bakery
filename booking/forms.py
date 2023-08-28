@@ -10,12 +10,12 @@ class BookingForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ('booked_item', 'booking_name', 'number_of_items',
+        fields = ('booked_item', 'customer', 'number_of_items',
                 'personal_message', 'booking_date', 'delivery_time',
                 'home_delivery', 'address')
         labels = {
             'booked_item': 'Cake',
-            'booking_name': 'Your Name',
+            'customer': 'Your Name',
             'number_of_items': 'Number of cakes',
             'personal_message': 'Your personal message 5 &euro;',
             'booking_date': 'Date',

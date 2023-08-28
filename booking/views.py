@@ -8,28 +8,32 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 
 
-class BookingCake(request, LoginRequiredMixin, CreateView):
-    error = ''
-    if request.method == POST:
-        form = BookingForm(request.post)
-        if form.is_valid():
-            form.save()
-            return redirect('all_bookings')
-        else:
-            error = 'Please check your order'
+class BookingCake(LoginRequiredMixin, CreateView):
 
-    form = BookingForm
-    # template_name = 'booking.html'
-    # success_url = 'all_bookings'
-    # model = Booking
-    data = {
-        'form': form,
-        'error': error
-    }
-    return render(request, 'booking/booking.html', data)
+    form_class = BookingForm
+    template_name = 'booking.html'
+    success_url = 'all_bookings'
+    model = Booking
 
     # def form_valid(self, form):
     #    return super(BookingCake, self).form_valid(form)
+
+    def order(request):
+        error = ''
+        data = {
+            'form': form,
+            'error': error
+        }
+
+        if request.method == POST:
+            form = BookingForm(request.post)
+            customer = User
+            if form.is_valid():
+                form.instance.customer = customer
+                form.save()
+                return redirect('all_bookings.html')
+            else:
+                error = 'Please check your order'
 
 
 class BookingList(LoginRequiredMixin, ListView):
@@ -37,6 +41,7 @@ class BookingList(LoginRequiredMixin, ListView):
     template_name = 'all_bookings.html'
 
     def get_queryset(self):
+        queryset = Booking.objects.order_by("completed")
 
         return Booking.objects.all()
         # filter(
