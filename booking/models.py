@@ -2,6 +2,7 @@ from django.db import models
 from menu.models import MenuItem
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Choice fields
@@ -14,6 +15,7 @@ class Booking(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE,
         related_name="booking_customer")
     booking_name = models.CharField(max_length=25)
+    phone = PhoneNumberField(blank=False)
     booked_item = models.ForeignKey(MenuItem,
         on_delete=models.CASCADE, related_name="ordered_item")
     number_of_items = models.IntegerField(default=1)

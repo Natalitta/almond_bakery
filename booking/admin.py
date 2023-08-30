@@ -11,6 +11,8 @@ class BookingAdmin(admin.ModelAdmin):
         'booked_item',
         'number_of_items',
         'home_delivery',
+        'address',
+        'phone',
         'booking_date',
         'delivery_time',
         'completed'
