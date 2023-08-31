@@ -9,6 +9,10 @@ nav .brand{
 .card-body a {
     color: rgb(168, 79, 6);
 }
+a:hover,
+a:active {
+    font-weight: bold;
+}
 #vegan {
     background-color: rgb(209, 255, 189);
     border-radius: 5px;
@@ -47,4 +51,8 @@ nav .brand{
     color: white;
     font-weight: bold;
     text-decoration: none;
+}
+.span-link:hover {
+    font-size: larger;
+    font-weight: bolder;
 }
