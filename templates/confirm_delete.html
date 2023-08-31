@@ -13,7 +13,8 @@
         <p>Cake: {{ object.booked_item }}</p>
         <p>Date: {{ object.booking_date }}</p>
 
-        <input type="submit" value="Confirm" class="btn btn-danger">
+        <input type="submit" value="Confirm" class="btn btn-light">
+        <button class="btn btn-secondary" onclick="javascript:history.back();">Cancel</button>
     </form>
 </div>
 {% endblock %}
