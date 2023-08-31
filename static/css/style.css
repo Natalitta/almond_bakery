@@ -26,6 +26,23 @@ nav .brand{
     border-radius: 10px;
     padding: 3px;
 }
+
+#cancel-btn {
+    background-color: rgb(168, 79, 6);
+    color: white;
+    text-decoration: none;
+    font-weight: bold; 
+    border: solid 1px white;
+    border-radius: 10px;
+    padding: 3px;
+}
+.btn:hover {
+    font-size: larger;
+}
+.btn-success:hover,
+.btn-danger:hover {
+    font-size: medium;
+}
 .span-link {
     color: white;
     font-weight: bold;
