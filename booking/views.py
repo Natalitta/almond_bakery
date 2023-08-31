@@ -69,3 +69,6 @@ class DeleteBooking(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             'You have successfully deleted your order'
         )
         return super(DeleteBooking, self).form_valid(form)
+
+    def test_func(self):
+        return redirect('confirm_delete.html')

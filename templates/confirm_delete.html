@@ -5,15 +5,15 @@
 
 <!-- Form to confirm Booking deletion -->
 <div class="form-style text-center p-3 m-3">
-    <h1 class="text-center">Delete Order</h1>
+    <h1 class="text-center">Delete Your Order?</h1>
     <form method="post">
         {% csrf_token %}
-        <p>Are you sure you want to delete your order: "{{ object.pk }}"?</p>
+        <p>Are you sure you want to delete your order?</p>
         <p>Name: {{ object.booking_name }}</p>
         <p>Cake: {{ object.booked_item }}</p>
         <p>Date: {{ object.booking_date }}</p>
 
-        <input type="submit" value="Confirm" class="btn order-btn">
+        <input type="submit" value="Confirm" class="btn btn-danger">
     </form>
 </div>
 {% endblock %}
