@@ -54,6 +54,9 @@ class EditBooking(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         )
         return super(EditBooking, self).form_valid(form)
 
+    def test_func(self):
+        return self.request.user
+
 
 class DeleteBooking(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Booking
