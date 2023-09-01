@@ -5,19 +5,16 @@ from .models import MenuItem, Booking
 from .forms import BookingForm
 from datetime import timedelta, date
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 
-class BookingCake(LoginRequiredMixin, CreateView):
+class BookingCake(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     form_class = BookingForm
     template_name = 'booking.html'
     success_url = 'all_bookings'
     success_message = 'Thank you for your order!'
     model = Booking
-
-    # def form_valid(self, form):
-    #    return super(BookingCake, self).form_valid(form)
 
     def order(request):
         error = ''
@@ -30,7 +27,7 @@ class BookingCake(LoginRequiredMixin, CreateView):
             form = BookingForm(request.post)
             if form.is_valid():
                 form.instance.customer = self.request.user
-                form.save()   
+                form.save()
                 return redirect('all_bookings.html')
             else:
                 error = 'Please check your order'
@@ -42,7 +39,7 @@ class BookingList(LoginRequiredMixin, ListView):
     template_name = 'all_bookings.html'
 
 
-class EditBooking(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditBooking(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     form_class = BookingForm
     template_name = 'edit_booking.html'
     success_url = "all_bookings"
@@ -60,7 +57,7 @@ class EditBooking(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user
 
 
-class DeleteBooking(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class DeleteBooking(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = Booking
     template_name = 'confirm_delete.html'
     success_url = "all_bookings"
