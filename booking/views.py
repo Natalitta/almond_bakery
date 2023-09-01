@@ -13,6 +13,7 @@ class BookingCake(LoginRequiredMixin, CreateView):
     form_class = BookingForm
     template_name = 'booking.html'
     success_url = 'all_bookings'
+    success_message = 'Thank you for your order!'
     model = Booking
 
     # def form_valid(self, form):
@@ -29,7 +30,7 @@ class BookingCake(LoginRequiredMixin, CreateView):
             form = BookingForm(request.post)
             if form.is_valid():
                 form.instance.customer = self.request.user
-                form.save()
+                form.save()   
                 return redirect('all_bookings.html')
             else:
                 error = 'Please check your order'
@@ -45,12 +46,13 @@ class EditBooking(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = BookingForm
     template_name = 'edit_booking.html'
     success_url = "all_bookings"
+    success_message = 'You have successfully updated your order.'
     model = Booking
 
     def form_valid(self, form):
         messages.success(
-            self.request,
-            f'You have successfully updated your order.'
+            request,
+            'You have successfully updated your order.'
         )
         return super(EditBooking, self).form_valid(form)
 
@@ -62,10 +64,11 @@ class DeleteBooking(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Booking
     template_name = 'confirm_delete.html'
     success_url = "all_bookings"
+    success_message = 'You have successfully deleted your order.'
 
     def form_valid(self, form):
         messages.success(
-            self.request,
+            request,
             'You have successfully deleted your order'
         )
         return super(DeleteBooking, self).form_valid(form)
