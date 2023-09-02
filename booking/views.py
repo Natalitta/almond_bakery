@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
 
-class BookingCake(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class BookingCake(SuccessMessageMixin, LoginRequiredMixin, CreateView):
 
     form_class = BookingForm
     template_name = 'booking.html'
@@ -39,7 +39,7 @@ class BookingList(LoginRequiredMixin, ListView):
     template_name = 'all_bookings.html'
 
 
-class EditBooking(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class EditBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = BookingForm
     template_name = 'edit_booking.html'
     success_url = "all_bookings"
@@ -57,7 +57,7 @@ class EditBooking(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, 
         return self.request.user
 
 
-class DeleteBooking(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+class DeleteBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Booking
     template_name = 'confirm_delete.html'
     success_url = "all_bookings"
@@ -71,4 +71,4 @@ class DeleteBooking(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin
         return super(DeleteBooking, self).form_valid(form)
 
     def test_func(self):
-        return redirect('confirm_delete.html')
+        return self.request.user

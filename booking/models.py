@@ -12,12 +12,13 @@ DELIVERY_TIME = ((1, "morning"), (2, "afternoon"), (3, "evening"))
 class Booking(models.Model):
 
     # Model for making bookings of menu items
-    customer = models.ForeignKey(User, on_delete=models.CASCADE,
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE,
         related_name="booking_customer")
     booking_name = models.CharField(max_length=25)
     phone = PhoneNumberField(blank=False)
-    booked_item = models.ForeignKey(MenuItem,
-        on_delete=models.CASCADE, related_name="ordered_item")
+    booked_item = models.ForeignKey(
+        MenuItem, on_delete=models.CASCADE, related_name="ordered_item")
     number_of_items = models.IntegerField(default=1)
     personal_message = models.CharField(blank=True, max_length=100)
     booking_date = models.DateField()
