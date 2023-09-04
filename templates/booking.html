@@ -8,6 +8,8 @@
     <form method="POST" action="{% url 'booking' %}" class="form mb-2 p-2 form-style"
         enctype="multipart/form-data">
         <h1 class="text-center">Order a cake</h1>
+        <p class="text-center">You can order a cake delivered to your home. <br>
+        You can also get a personalised cake for additional 5€. </p>
         {% csrf_token %}
         {{ form | crispy }}
         {{ form.media }}
