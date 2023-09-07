@@ -1,6 +1,5 @@
 from .models import Booking
 from django import forms
-from django.contrib.auth.models import User
 
 
 class DateInput(forms.DateInput):
@@ -12,12 +11,11 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = (
-            'booked_item', 'customer', 'phone', 'number_of_items',
+            'booked_item', 'phone', 'number_of_items',
             'personal_message', 'booking_date', 'delivery_time',
             'home_delivery', 'address')
         labels = {
             'booked_item': 'Cake',
-            'customer': 'Your Name',
             'phone': 'Your contact number',
             'number_of_items': 'Number of cakes',
             'personal_message': 'Your personal message 5 &euro;',

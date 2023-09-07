@@ -17,21 +17,16 @@ class BookingCake(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     success_message = 'Thank you for your order!'
     model = Booking
 
-    def order(request):
+    def post(self, request):
         error = ''
-        data = {
-            'form': form,
-            'error': error
-        }
-
-        if request.method == POST:
-            form = BookingForm(request.post)
-            if form.is_valid():
-                form.instance.customer = self.request.user
-                form.save()
-                return redirect('all_bookings.html')
-            else:
-                error = 'Please check your order'
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.customer_id = request.user.id
+            booking.save()
+            return redirect('all_bookings')
+        else:
+            error = 'Please check your order'
 
 
 class BookingList(LoginRequiredMixin, ListView):
