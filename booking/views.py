@@ -9,17 +9,31 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 
 
-class BookingCake(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+class BookingCake(SuccessMessageMixin, CreateView):
 
     form_class = BookingForm
     template_name = 'booking.html'
     success_url = 'all_bookings'
     success_message = 'Thank you for your order!'
     model = Booking
+    
 
-    def post(self, request):
+    def post(self, request, item_id):
+        booked_item = get_object_or_404(MenuItem, pk=item_id)
         error = ''
-        form = BookingForm(request.POST)
+        form_data = {
+            'booking_name': request.POST['booking_name'],
+            'email': request.POST['email'],
+            'phone': request.POST['phone'],
+            'address': request.POST['address'],
+            'booked_item': request.POST['booked_item'],
+            'number_of_items': request.POST['number_of_items'], 
+            'personal_message': request.POST['personal_message'],
+            'booking_date': request.POST['booking_date'],
+            'home_delivery': request.POST['home_delivery'],
+            'delivery_time': request.POST['delivery_time'], 
+        }
+        form = BookingForm(form_data)
         if form.is_valid():
             booking = form.save(commit=False)
             booking.customer_id = request.user.id

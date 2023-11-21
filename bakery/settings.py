@@ -33,7 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'almond-bakery-f92f9dfc55d0.herokuapp.com',
-    '8000-natalitta-almondbakery-p44yk7gjk6c.ws-eu104.gitpod.io'
+    '8000-natalitta-almondbakery-p44yk7gjk6c.ws-eu106.gitpod.io'
     ]
 
 
