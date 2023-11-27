@@ -8,9 +8,9 @@
     <form method="POST" action="{% url 'booking' %}" class="form mb-2 p-2 form-style"
         enctype="multipart/form-data">
         <h1 class="text-center">Order a cake</h1>
-        <p class="text-center">You can order a cake delivered to your home. <br>
-        You can also get a personalised cake for additional 5€. </p>
         {% csrf_token %}
+        <!--{{ form | crispy }}-->
+        
         <fieldset class=" ">
             <legend class="fieldset-label px-2 w-auto">Personal Details</legend>
             {{ form.booking_name | as_crispy_field }}
@@ -22,16 +22,16 @@
             {{ form.media }}
             {{ form.booked_item | as_crispy_field }}
             {{ form.number_of_items | as_crispy_field }}
+            <p class="text-center">You can get a personalised cake for additional € 5. 
+                <br> We'll write your message on the cake.</p>
             {{ form.personal_message | as_crispy_field }}
         </fieldset>
         <hr>
         <fieldset class=" ">
             <legend class="fieldset-label px-2 w-auto">Delivery</legend>
             {{ form.address | as_crispy_field }}
-            {{ form.booking_date | as_crispy_field }}
-            {{ form.delivery_time | as_crispy_field }}
-            
-        </fieldset> 
+            {{ form.booking_date | as_crispy_field }}            
+        </fieldset>--> 
         <br>
         <span>{{ error }}</span>
         <button type="submit" class="btn" id="order-btn">Submit the Order</button>
