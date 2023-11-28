@@ -18,20 +18,18 @@ class BookingCake(SuccessMessageMixin, CreateView):
     model = Booking
     
 
-    def post(self, request, item_id):
-        booked_item = get_object_or_404(MenuItem, pk=item_id)
+    def post(self, request):
+        #booked_item = get_object_or_404(MenuItem, pk=menu_item_id)
         error = ''
+        print(request.POST)
         form_data = {
             'booking_name': request.POST['booking_name'],
-            'email': request.POST['email'],
             'phone': request.POST['phone'],
             'address': request.POST['address'],
             'booked_item': request.POST['booked_item'],
             'number_of_items': request.POST['number_of_items'], 
             'personal_message': request.POST['personal_message'],
             'booking_date': request.POST['booking_date'],
-            'home_delivery': request.POST['home_delivery'],
-            'delivery_time': request.POST['delivery_time'], 
         }
         form = BookingForm(form_data)
         if form.is_valid():
@@ -41,6 +39,7 @@ class BookingCake(SuccessMessageMixin, CreateView):
             return redirect('all_bookings')
         else:
             error = 'Please check your order'
+            return redirect('booking')
 
 
 class BookingList(LoginRequiredMixin, ListView):

@@ -17,17 +17,3 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return str(self.title)
-
-
-class Menu(models.Model):
-    # Model to create a menu
-    title = models.CharField(max_length=25, unique=True)
-    cakes = models.ManyToManyField('MenuItem', related_name='cakes')
-    pastry = models.ManyToManyField('MenuItem', related_name='pastry')
-
-    class Meta:
-        # Order by name
-        ordering = ['title']
-
-    def __str__(self):
-        return str(self.title)
