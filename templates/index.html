@@ -3,12 +3,12 @@
 {% block content %}
 
 <div class="container-fluid">
-    <h1 class="text-uppercase text-center">menu</h1>
+    <h1 class="text-uppercase text-center mt-3"><b>menu</b></h1>
     <div class="row">
         
         <!-- Menu Item Entries Column -->
         <div class="col-12 mt-3">
-            <div class="row">  
+            <div class="row">
                 {% for menu_item in object_list %}
                 <div class="col-md-4">
                     <div class="card text-center mb-4">
@@ -19,12 +19,13 @@
                             </a>
                             <div style="height: 150px">
                                 <p class="card-text">{{ menu_item.description }}</p>
+                                <p class="card-text">{{ menu_item.price }} &euro;</p>
                                 <p>
                                     {% if menu_item.vegan %}
                                         <span id='vegan'>Vegan <i class="fa-solid fa-leaf"></i></span>
                                     {% endif %}
                                 </p>
-                                <p class="card-text">{{ menu_item.price }} &euro;</p>
+                               
                             </div>
                         </div>
                     </div>                

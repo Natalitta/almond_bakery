@@ -7,12 +7,13 @@ class BookingAdmin(admin.ModelAdmin):
     # Class to view bookings on admin panel
     list_display = (
         'pk',
-        'customer',
+        'booking_date',
         'booked_item',
         'number_of_items',
+        'customer',
         'address',
         'phone',
-        'booking_date',
+        'personal_message',
         'completed'
         )
     search_fields = ['pk', 'completed', 'booked_item',
