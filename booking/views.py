@@ -44,9 +44,11 @@ class BookingCake(SuccessMessageMixin, CreateView):
 
 class BookingList(LoginRequiredMixin, ListView):
     model = Booking
-    queryset = Booking.objects.order_by("booking_date")
     template_name = 'all_bookings.html'
 
+    def get_queryset(self):
+        return Booking.objects.filter(customer=self.request.user).order_by("booking_date")
+    
 
 class SuccessMessageMixin:
     # Add a message if form submitted successfully.
