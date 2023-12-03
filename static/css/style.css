@@ -1,6 +1,7 @@
 body {
     background-color: rgb(168, 79, 6);
     color: white;
+    font-family: 'Lato', sans-serif;
 }
 nav .brand{
     color: rgb(168, 79, 6);
