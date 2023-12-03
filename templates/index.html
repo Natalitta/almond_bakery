@@ -13,11 +13,11 @@
                 <div class="col-md-4">
                     <div class="card text-center mb-4">
                         <div class="card-body">
-                            <h2 class="card-title">{{ menu_item.title }}</h2>
+                            <h4 class="card-title">{{ menu_item.title }}</h4>
                             <a href="{% url 'booking' %}">
                                 <img class="card-img-top" src=" {{ menu_item.featured_image.url }}" alt="{{ menu_item.title }}">
                             </a>
-                            <div style="height: 150px">
+                            <div style="height: auto">
                                 <p class="card-text">{{ menu_item.description }}</p>
                                 <p class="card-text">{{ menu_item.price }} &euro;</p>
                                 <p>
@@ -44,7 +44,7 @@
     <div class="d-grid gap-2 col-6 mx-auto text-center">
         <a href="{% url 'booking' %}">
             <button class="btn" id="order-btn" type="button">
-                Order your favourite cake                                   
+                Order cake                                   
             </button>
         </a>
     </div>

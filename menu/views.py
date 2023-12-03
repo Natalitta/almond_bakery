@@ -4,6 +4,7 @@ from .models import MenuItem
 
 
 class MenuList(generic.ListView):
+    # View all menu items
     model = MenuItem
     queryset = MenuItem.objects.order_by("title")
     template_name = "index.html"

@@ -10,7 +10,7 @@ from django.contrib import messages
 
 
 class BookingCake(SuccessMessageMixin, CreateView):
-
+    # Make a booking
     form_class = BookingForm
     template_name = 'booking.html'
     success_url = 'all_bookings'
@@ -19,7 +19,7 @@ class BookingCake(SuccessMessageMixin, CreateView):
     
 
     def post(self, request):
-        #booked_item = get_object_or_404(MenuItem, pk=menu_item_id)
+        # Post booking form
         error = ''
         print(request.POST)
         form_data = {
@@ -43,6 +43,7 @@ class BookingCake(SuccessMessageMixin, CreateView):
 
 
 class BookingList(LoginRequiredMixin, ListView):
+    # View all bookings of a user
     model = Booking
     template_name = 'all_bookings.html'
 
@@ -66,6 +67,7 @@ class SuccessMessageMixin:
 
 
 class EditBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    # Edit booking
     form_class = BookingForm
     template_name = 'edit_booking.html'
     success_url = 'all_bookings'
@@ -80,6 +82,7 @@ class EditBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, 
 
 
 class DeleteBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    # Delete booking and confirm deletion
     model = Booking
     template_name = 'confirm_delete.html'
     success_url = 'all_bookings'

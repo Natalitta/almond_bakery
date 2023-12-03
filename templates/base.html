@@ -54,7 +54,7 @@
                     </li>
                     {% endif %}
                     <li>
-                        <a class="nav-link" href="{% url 'booking' %}">Order a cake</a>
+                        <a class="nav-link" href="{% url 'booking' %}">Order cake</a>
                     </li>
                     <li>
                         <a class="nav-link" href="{% url 'all_bookings' %}">My Orders</a>
@@ -92,15 +92,18 @@
     <footer class="footer mt-auto py-3 dark-bg">
         <p class="m-0 text-center text-white">Made by Nataliia Lebedieva</p>
         <p class="m-0 text-center text-white">Follow us: 
-            <a href="https://www.twitter.com/" target="_blank" class="span-link">
+            <a href="https://www.twitter.com/" target="_blank" aria-label="twitter link" class="span-link">
                 <i class="fab fa-twitter-square ms-3"></i>
             </a>
-            <a href="https://www.facebook.com/" target="_blank" class="span-link">
+            <a class="sr-only sr-only-focusable" href="https://www.twitter.com/">Link to Twitter page</a>
+            <a href="https://www.facebook.com/" target="_blank" aria-label="facebook link" class="span-link">
                 <i class="fab fa-facebook-square ms-3"></i>
             </a>
-            <a href="https://www.instagram.com/" target="_blank" class="span-link">
+            <a class="sr-only sr-only-focusable" href="https://www.facebook.com/">Link to Facebook page</a>
+            <a href="https://www.instagram.com/" target="_blank" aria-label="instagram link" class="span-link">
                 <i class="fab fa-instagram-square ms-3"></i>
             </a>
+            <a class="sr-only sr-only-focusable" href="https://www.instagram.com/">Link to Instagram page</a>
         </p>
     </footer>
     <script>

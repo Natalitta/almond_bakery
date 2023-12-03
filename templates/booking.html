@@ -5,7 +5,7 @@
 <!-- Booking form -->
 {% block content %}
 <div class="col-md-6 mt-3 offset-md-3">
-    <form method="POST" action="{% url 'booking' %}" class="form mb-2 p-2 form-style"
+    <form method="POST" action="{% url 'booking' %}" class="form mb-2 p-2"
         enctype="multipart/form-data">
         <h1 class="text-center">Order a cake</h1>
         {% csrf_token %}
