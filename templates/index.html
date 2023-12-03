@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container-fluid">
-    <h1 class="text-uppercase text-center mt-3"><b>Cakes</b></h1>
+    <h2 class="text-uppercase text-center mt-3"><b>Cakes</b></h2>
     <div class="row">
         <!-- Menu Item Entries Column -->
         <div class="col-12 mt-3">
@@ -12,19 +12,18 @@
                 <div class="col-md-4">
                     <div class="card text-center mb-4">
                         <div class="card-body">
-                            <h4 class="card-title">{{ menu_item.title }}</h4>
+                            <h3 class="card-title">{{ menu_item.title }}</h3>
                             <a href="{% url 'booking' %}">
                                 <img class="card-img-top" src=" {{ menu_item.featured_image.url }}" alt="{{ menu_item.title }}">
                             </a>
                             <div style="height: auto">
                                 <p class="card-text">{{ menu_item.description }}</p>
                                 <p class="card-text">{{ menu_item.price }} &euro;</p>
-                                <p>
+                                <p id="vegan">
                                     {% if menu_item.vegan %}
-                                        <span id='vegan'>Vegan <i class="fa-solid fa-leaf"></i></span>
+                                        <span>Vegan <i class="fa-solid fa-leaf"></i></span>
                                     {% endif %}
-                                </p>
-                               
+                                </p>   
                             </div>
                         </div>
                     </div>                
@@ -36,15 +35,12 @@
             {% if forloop.last %}
             </div>
             {% endif %}
-            {% endfor %}
-            </div>   
+            {% endfor %}   
         </div>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto text-center">
-        <a href="{% url 'booking' %}">
-            <button class="btn" id="order-btn" type="button">
-                Order cake                                   
-            </button>
+        <a href="{% url 'booking' %}" id="order-btn" type="button">
+            Order cake
         </a>
     </div>
 </div>
