@@ -12,8 +12,9 @@
         {{ form | crispy }}
         {{ form.media }}
         {% csrf_token %}
-        <button type="submit" class="btn" id="order-btn">Save</button>
-        <button class="btn" id="cancel-btn" onclick="javascript:history.back();">Cancel</button>
+        <br>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button class="btn btn-danger" onclick="javascript:history.back();">Cancel</button>
     </form>
 </div>
 

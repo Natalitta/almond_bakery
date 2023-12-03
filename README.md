@@ -89,8 +89,11 @@ A footer at the bottom of the site contains social media links: Twitter, Faceboo
 ### Validator Testing
 The application was tested to ensure that the code passes the official validators.
 #### HTML
+<img src="media/html.png" alt="html validation">
 
 #### CSS
+<img src="media/css.png" alt="css validation">
+
 #### JavaScript
 #### Python
 #### Accessibility Testing
