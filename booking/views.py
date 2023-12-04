@@ -16,7 +16,6 @@ class BookingCake(SuccessMessageMixin, CreateView):
     success_url = 'all_bookings'
     success_message = 'Thank you for your order!'
     model = Booking
-    
 
     def post(self, request):
         # Post booking form
@@ -27,7 +26,7 @@ class BookingCake(SuccessMessageMixin, CreateView):
             'phone': request.POST['phone'],
             'address': request.POST['address'],
             'booked_item': request.POST['booked_item'],
-            'number_of_items': request.POST['number_of_items'], 
+            'number_of_items': request.POST['number_of_items'],
             'personal_message': request.POST['personal_message'],
             'booking_date': request.POST['booking_date'],
         }
@@ -48,8 +47,9 @@ class BookingList(LoginRequiredMixin, ListView):
     template_name = 'all_bookings.html'
 
     def get_queryset(self):
-        return Booking.objects.filter(customer=self.request.user).order_by("booking_date")
-    
+        return Booking.objects.filter(
+            customer=self.request.user).order_by("booking_date")
+
 
 class SuccessMessageMixin:
     # Add a message if form submitted successfully.
@@ -66,7 +66,9 @@ class SuccessMessageMixin:
         return self.success_message % cleaned_data
 
 
-class EditBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditBooking(
+                SuccessMessageMixin, LoginRequiredMixin,
+                UserPassesTestMixin, UpdateView):
     # Edit booking
     form_class = BookingForm
     template_name = 'edit_booking.html'
@@ -81,7 +83,9 @@ class EditBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, 
         return self.request.user
 
 
-class DeleteBooking(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class DeleteBooking(
+                    SuccessMessageMixin, LoginRequiredMixin,
+                    UserPassesTestMixin, DeleteView):
     # Delete booking and confirm deletion
     model = Booking
     template_name = 'confirm_delete.html'

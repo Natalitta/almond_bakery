@@ -3,9 +3,8 @@ from booking.models import Booking
 
 
 class TestViews(TestCase):
-    
+
     # Test booking app for logged in user
-    
     def test_setUp(self):
         # Setup test
         username = "Emily"

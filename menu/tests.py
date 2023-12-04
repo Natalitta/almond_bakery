@@ -2,9 +2,8 @@ from django.test import TestCase
 
 
 class TestViews(TestCase):
-    
+
     # Test Home page
-    
     def test_home_page(self):
         # Test correct home page is displayed
         response = self.client.get('/')

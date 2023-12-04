@@ -24,18 +24,6 @@ class BookingForm(forms.ModelForm):
         }
         widgets = {
             'booking_date': DateInput(
-                attrs={'min': date.today()+ timedelta(days=1)}
+                attrs={'min': date.today() + timedelta(days=1)}
                 ),
         }
-        
-        
-        def __init__(self, *args, **kwargs):
-       
-            # Add placeholders, remove auto-generated labels
-            super().__init__(*args, **kwargs)
-            placeholders = {
-                'booking_name': 'Full Name',
-                'email': 'Email Address',
-                'phone': 'Phone Number',
-                'address': 'Full Address',
-            }
