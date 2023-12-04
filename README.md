@@ -47,6 +47,7 @@ There are 4 Epics (Milestones):
     * As an owner, I'd like to have a home page with a menu and navigation, a button to place an order so that site is convenient to use and gives an opportunity to order straight away.
     * As an owner, I'd like to have access to menu items and bookings, all data so that I can view and manage them.
     * As an owner, I'd like to have links to my social media accounts so that I have more connections with my audience.
+    * As a developer, I'd need to make a custom 404 page so that users can easily get back to the main page if they went to a broken link.
 
 * Deployment:
     * As an owner, I'd like to have my site up and running so that customers can utilise it.
@@ -55,15 +56,20 @@ There are 4 Epics (Milestones):
 
 ### The-Scope-Plane
 
-•	Home page with bakery menu 
+•	Home page with bakery menu and button to order
+
 •	Drop-down navigation menu for mobile devices
+
 •	Ability to perform CRUD functionality on Bookings 
+
 •	Responsive Design - Site should be fully functional on all devices from 320px up
 
 ## The-Structure-Plane
+
 ### Features
+
 ### Menu USER STORIES 
-    As an owner, I'd like to have a home page with a menu and navigation, a button to place an order so that site is convenient to use and gives an opportunity to order straight away.
+As an owner, I'd like to have a home page with a menu and navigation, a button to place an order so that site is convenient to use and gives an opportunity to order straight away.
 
 Implementation:
 
@@ -178,53 +184,53 @@ The images were taken from Unsplash and Freepic which are royalty free image sit
 
 #### HTML
 
-    The app was developed using templates with HTML as the main language.
+The app was developed using templates with HTML as the main language.
 
 #### CSS & Bootstrap
 
-    The app was styled using an external CSS file and Bootstrap framework.
+The app was styled using an external CSS file and Bootstrap framework.
 
 #### JavaScript
 
-    JavaScript was used to set timeout for message alerts and redirect after deletion of an order.
+JavaScript was used to set timeout for message alerts and redirect after deletion of an order.
 
 #### Gitpod
-    The app was developed using Gitpod IDE
+The app was developed using Gitpod IDE
 
 #### GitHub
-    The source code is hosted on GitHub
+The source code is hosted on GitHub
 
 #### Git
-    Used to commit and push code during the development of the web app
+Used to commit and push code during the development of the web app
 
 #### Font Awesome
-    Used for icons throughout the site
+Used for icons throughout the site
 
 #### Favicon
 
-    favicon files were created at https://favicon.io/favicon-converter/
+favicon files were created at https://favicon.io/favicon-converter/
 
 #### Python
 
-    Python was the main programming language used for the application using the Django Framework.
+Python was the main programming language used for the application using the Django Framework.
 
-    Python Modules:
+Python Modules:
 
-        Django Class based views 
-        Mixins 
-        messages
-        date
-        timedelta
+    Django Class based views 
+    Mixins 
+    messages
+    date
+    timedelta
 
-    External Python Modules:
+External Python Modules:
 
-        Django
-        cloudinary
-        crispy-forms
-        gunicorn
+    cloudinary
+    crispy-forms
+    gunicorn
 
 ## Testing
 ### Validator Testing
+
 The application was tested to ensure that the code passes the official validators.
 
 ### HTML
@@ -233,6 +239,9 @@ The website was run through the w3 HTML Validator. Initially there were some err
 <img src="media/html.png" alt="html validation">
 
 ### CSS
+
+The website was run through the w3 CSS Validator. The website passed validation.
+
 <img src="media/css.png" alt="css validation">
 
 ### JavaScript
@@ -253,16 +262,18 @@ To test Accessibility the Wave tool was used.
 
 Testing was focused to ensure the following criteria were met:
 
-    All forms have associated labels or aria-labels so that this is read out on a screen reader to users who tab to form inputs.
-    Color contrasts meet a minimum ratio as specified in WCAG 2.1 Contrast Guidelines.
-    Heading levels are not missed or skipped to ensure the importance of content is relayed correctly to the end user.
-    All content is contained within landmarks to ensure ease of use for assistive technology, allowing the user to navigate by page regions.
-    All not textual content had alternative text or titles so descriptions are read out to screen readers.
-    HTML page lang attribute has been set.
-    Aria properties have been implemented correctly.
-    WCAG 2.1 Coding best practices being followed.
+* All forms have associated labels or aria-labels so that this is read out on a screen reader to users who tab to form inputs.
+* Color contrasts meet a minimum ratio as specified in WCAG 2.1 Contrast Guidelines.
+* Heading levels are not missed or skipped to ensure the importance of content is relayed correctly to the end user.
+* All content is contained within landmarks to ensure ease of use for assistive technology, allowing the user to navigate by page regions.
+* All not textual content had alternative text or titles so descriptions are read out to screen readers.
+* HTML page lang attribute has been set.
+* Aria properties have been implemented correctly.
+* WCAG 2.1 Coding best practices being followed.
 
-    There were a few issues: missing language in the head section, missing aria-labels for the footer links presented by icons of social media. The issues were solved.
+There were a few issues: 
+
+missing language in the head section, missing aria-labels for the footer links presented by icons of social media. The issues were solved.
 
 ### Lighthouse Testing
 
@@ -282,23 +293,21 @@ Testing Steps:
     Set the zoom to 50%
     Click and drag the responsive window to maximum width
 
-Expected:
-
-    Website is responsive on all screen sizes and no images are pixelated or stretched. No horizontal scroll is present. No elements overlap.
+Expected: Website is responsive on all screen sizes and no images are pixelated or stretched. No horizontal scroll is present. No elements overlap.
 
 Actual Result: As Expected
 
 Result:  Pass
 
-    Website was also tested for the following devices and no responsive issues were seen:
+Website was also tested for the following devices and no responsive issues were seen:
 
-    Pixel 4A, Samsung Galaxy A51/71, iPhone Pro Max 14
+Pixel 4A, Samsung Galaxy A51/71, iPhone Pro Max 14
 
 ## Functional Testing
 
 ### Authentication
 
-Description: Ensure a user can sign up to the website
+#### Description: Ensure a user can sign up to the website
 
     Steps:
 
@@ -306,13 +315,13 @@ Description: Ensure a user can sign up to the website
         Enter email, username and password
         Click Sign up
 
-    Expected: Registration is successful, a user can log in.
+Expected: Registration is successful, a user can log in.
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
-Description: Ensure a user can log in once signed up
+#### Description: Ensure a user can log in once signed up
 
     Steps:
 
@@ -320,13 +329,13 @@ Description: Ensure a user can log in once signed up
         Enter login details from previous test case
         Click login
 
-    Expected: User is logged in successfully and can view My orders page which is restricted.
+Expected: User is logged in successfully and can view My orders page which is restricted.
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
-Description: Ensure a user can sign out
+#### Description: Ensure a user can sign out
 
     Steps:
 
@@ -334,15 +343,15 @@ Description: Ensure a user can sign out
         Click the logout button
         Click confirm on the logout confirmation page
 
-    Expected: User is logged out successfully
+Expected: User is logged out successfully
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
 ### Booking Forms
 
-Description: Ensure a new booking can be created.
+#### Description: Ensure a new booking can be created.
 
     Steps:
 
@@ -356,13 +365,13 @@ Description: Ensure a new booking can be created.
             Date: Any future date
         Click Create
 
-    Expected: Form successfully submits and redirects to My orders page.
+Expected: Form successfully submits and redirects to My orders page.
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
-Description: Ensure a booking can be edited.
+#### Description: Ensure a booking can be edited.
 
     Steps:
 
@@ -370,13 +379,13 @@ Description: Ensure a booking can be edited.
         Enter updated info
         Click Create
 
-    Expected: Form successfully submits and redirects to My orders page.
+Expected: Form successfully submits and redirects to My orders page.
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
-Description: Ensure user can successfully delete a booking.
+#### Description: Ensure user can successfully delete a booking.
 
     Steps:
 
@@ -386,15 +395,15 @@ Description: Ensure user can successfully delete a booking.
         Click the confirm button on the delete confirmation page
 
     
-    Expected: Booking is successfully deleted and redirects to My orders page
+Expected: Booking is successfully deleted and redirects to My orders page
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
 ### Menu
 
-Description: Ensure an admin have access to create menu items
+#### Description: Ensure an admin have access to create menu items
 
     Steps:
 
@@ -409,30 +418,29 @@ Description: Ensure an admin have access to create menu items
             Checkbox: Vegan
         Click Create
 
-    Expected: A new menu item is sucessfully added and can be viewed on home page.
+Expected: A new menu item is sucessfully added and can be viewed on home page.
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
+#### Description: Ensure a menu can be updated
 
-Description: Ensure a menu can be updated
+Steps:
+    Add /admin to the website url
+    Login using admin details
+    Navigate to Menu items
+    Click on the menu item to be updated
+    Change the information
+    Click Save
 
-    Steps:
-        Add /admin to the website url
-        Login using admin details
-        Navigate to Menu items
-        Click on the menu item to be updated
-        Change the information
-        Click Save
+Expected: Menu item has been updated and new info is displayed on the home page.
 
-    Expected: Menu item has been updated and new info is displayed on the home page.
+Actual: As expected
 
-    Actual: As expected
+Result: Pass
 
-    Result: Pass
-
-Description: Ensure a menu item can be deleted
+#### Description: Ensure a menu item can be deleted
 
     Steps:
 
@@ -442,11 +450,11 @@ Description: Ensure a menu item can be deleted
         Click on the menu item to be deleted
         Click Delete
 
-    Expected: Menu item has been deleted and cannot be seen on the home page
+Expected: Menu item has been deleted and cannot be seen on the home page
 
-    Actual: As expected
+Actual: As expected
 
-    Result: Pass
+Result: Pass
 
 ### Navigation Links
 
