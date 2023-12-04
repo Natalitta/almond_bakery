@@ -16,7 +16,7 @@ class BookingForm(forms.ModelForm):
             'personal_message', 'booking_date', 'address', 'booking_name')
         labels = {
             'booked_item': 'Cake',
-            'phone': 'Your contact number',
+            'phone': 'Your phone number e.g. +3531234567',
             'number_of_items': 'Number of cakes',
             'personal_message': 'Your personal message 5 &euro;',
             'booking_date': 'Date',
