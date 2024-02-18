@@ -487,4 +487,44 @@ Tests were performed on the booking page to ensure that:
 
 ### Bugs
 
-There was a bug with using classes for buttons and a tags due to Bootstrap, some of them do not work unless changed into ids, I tried to specify them more precisely mentioning there parent element but it didn't work either. So I added style attribute to a few anchor tags to avoid using an id  multiple times.
+There was a bug with using classes for buttons and anchor tags due to Bootstrap, some of them do not work unless changed into ids, I tried to specify them more precisely mentioning there parent element but it didn't work either. So I added style attribute to a few anchor tags to avoid using an id  multiple times.
+
+## Deployment
+
+### Version Control
+
+The Almond Bakery website was created using Gitpod and pushed to the remote Github repository.
+
+There were used such git commands throughout the development process to push the code to the remote repository on Github:
+
+* git add . - This command was used to add all files to the staging area before they are committed.
+
+* git commit -m “a commit message” - This command was used to commit the changes to the local repository prepare for the final step.
+
+* git push - This command was used to push all committed code to Github remote repository.
+
+### Heroku Deployment
+
+Finally the site was deployed to Heroku to be used by users. The deployment steps are following:
+
+1) Go to Heroku and create a new app clicking "New".
+
+2) Choose a name and region for an app, click "Create app".
+
+3) Go to "Settings" and navigate to Config Vars. Add the following config variables:
+
+    * SECRET_KEY: (Your secret key) 
+    * DATABASE_URL: (This should already exist with add on of postgres) 
+    * EMAIL_HOST_USER: (email address) 
+    * EMAIL_HOST_PASS: (email app password) 
+    * CLOUNDINARY_URL: (cloudinary api url)
+
+4) Open "Deploy" tab, select Github as the deployment method, authorize and search for repository by its name and connect.
+
+5) Choose Enable Automatic Deploys, main branch. This will update the site if there are any changes made in the repository.
+
+6) Click Deploy a GitHub branch (main).
+
+7) The app was successfully deployed. Click View to see it.
+
+The live link can be found here: <a href="https://almond-bakery-f92f9dfc55d0.herokuapp.com/" target="_blank"> Link to the deployed project</a>
