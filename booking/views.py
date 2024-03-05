@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import MenuItem, Booking
@@ -7,9 +7,10 @@ from datetime import timedelta, date
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 
-class BookingCake(SuccessMessageMixin, CreateView):
+class BookingCake(LoginRequiredMixin,SuccessMessageMixin, CreateView):
     # Make a booking
     form_class = BookingForm
     template_name = 'booking.html'
@@ -20,7 +21,6 @@ class BookingCake(SuccessMessageMixin, CreateView):
     def post(self, request):
         # Post booking form
         error = ''
-        print(request.POST)
         form_data = {
             'booking_name': request.POST['booking_name'],
             'phone': request.POST['phone'],
@@ -31,14 +31,15 @@ class BookingCake(SuccessMessageMixin, CreateView):
             'booking_date': request.POST['booking_date'],
         }
         form = BookingForm(form_data)
+        form.instance.customer = self.request.user
+
         if form.is_valid():
             booking = form.save(commit=False)
-            booking.customer_id = request.user.id
             booking.save()
-            return redirect('all_bookings')
+            return super(BookingCake, self).form_valid(form)
         else:
             error = 'Please check your order'
-            return redirect('booking')
+            return redirect(reverse('booking'))
 
 
 class BookingList(LoginRequiredMixin, ListView):
@@ -77,7 +78,8 @@ class EditBooking(
     model = Booking
 
     def form_valid(self, form):
-        return super(EditBooking, self).form_valid(form)
+        form.save()
+        return redirect('all_bookings')
 
     def test_func(self):
         return self.request.user
@@ -89,11 +91,11 @@ class DeleteBooking(
     # Delete booking and confirm deletion
     model = Booking
     template_name = 'confirm_delete.html'
-    success_url = 'all_bookings'
+    success_url = reverse_lazy('all_bookings')
     success_message = 'You have successfully deleted your order.'
 
     def form_valid(self, form):
-        return super(DeleteBooking, self).form_valid(form)
+        return super(DeleteBooking,self).form_valid(form)
 
     def test_func(self):
         return self.request.user
