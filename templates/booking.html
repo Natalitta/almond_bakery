@@ -9,8 +9,6 @@
         enctype="multipart/form-data">
         <h1 class="text-center">Order a cake</h1>
         {% csrf_token %}
-        <!--{{ form | crispy }}-->
-        
         <fieldset class=" ">
             <legend class="fieldset-label px-2 w-auto">Personal Details</legend>
             {{ form.booking_name | as_crispy_field }}
@@ -27,7 +25,7 @@
             {{ form.personal_message | as_crispy_field }}
         </fieldset>
         <hr>
-        <fieldset class=" ">
+        <fieldset>
             <legend class="fieldset-label px-2 w-auto">Delivery</legend>
             {{ form.address | as_crispy_field }}
             {{ form.booking_date | as_crispy_field }}            

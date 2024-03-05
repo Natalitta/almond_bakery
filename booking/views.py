@@ -39,7 +39,7 @@ class BookingCake(LoginRequiredMixin,SuccessMessageMixin, CreateView):
             return super(BookingCake, self).form_valid(form)
         else:
             error = 'Please check your order'
-            return redirect(reverse('booking'))
+            return render(request, self.template_name, {'form': form, 'error': error})
 
 
 class BookingList(LoginRequiredMixin, ListView):

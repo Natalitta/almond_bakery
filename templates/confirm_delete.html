@@ -14,7 +14,13 @@
         <p>Date: {{ object.booking_date }}</p>
 
         <input type="submit" value="Confirm" class="btn btn-success">
-        <button class="btn btn-danger" onclick="javascript:history.back();">Cancel</button>
+        <button class="btn btn-danger" id="cancel-button">Cancel</button>
     </form>
 </div>
+<script>
+    document.getElementById('cancel-button').addEventListener('click', function(event) {
+        event.preventDefault();  // Prevent default form submission
+        history.back();  // Go back to the previous page
+    });
+</script>
 {% endblock %}
