@@ -489,6 +489,12 @@ Tests were performed on the booking page to ensure that:
 
 There was a bug with using classes for buttons and anchor tags due to Bootstrap, some of them do not work unless changed into ids, I tried to specify them more precisely mentioning there parent element but it didn't work either. So I added style attribute to a few anchor tags to avoid using an id  multiple times.
 
+There was a bug with not displaying an error message if the form wasn't valid. 
+Fixed by adding error varible to the context when rendering.
+
+In some browsers Deletion wasn't cancelled when the cancel button was clicked.
+Fixed by adding onclick event handler to the "Cancel" button so that it cancels the default form submission action. 
+
 ## Deployment
 
 ### Version Control
